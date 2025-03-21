@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Онлайн-бібліотека</title>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Бокове меню */
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #34495e;
+        }
+
+        form {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .logout-btn {
+            width: 100%; /* Забезпечує повну ширину */
+            display: block;
+            border: none;
+
+            background: #e74c3c;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+
+        /* Основний контент */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .book-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 10px;
+        }
+
+        .book {
+            min-width: 200px;
+            height: 250px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .book:hover {
+            background: #bdc3c7;
+        }
+
+        /* Стилі для скролу */
+        .book-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .book-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <ul>
+    <li><a href="main">Головна</a></li>
+    <li><a href="personal_cabinet">Особистий кабінет</a></li>
+    <!--<li><a href="main">Налаштування</a></li>-->
+  </ul>
+  <form action="/logout" method="get">
+    <button type="submit" class="logout-btn">Вийти</button>
+  </form>
+</div>
+
+<div class="main-content">
+  <input type="text" class="search-bar" placeholder="Пошук книг...">
+
+  <h2>Рекомендовані книги</h2>
+  <div class="book-container">
+    <a class="book" href="book1">📖 Книга 1</a>
+    <a class="book" href="book2">📖 Книга 2</a>
+    <a class="book" href="book3">📖 Книга 3</a>
+    <a class="book" href="book4">📖 Книга 4</a>
+    <a class="book" href="book5">📖 Книга 5</a>
+  </div>
+</div>
+
+</body>
+</html>

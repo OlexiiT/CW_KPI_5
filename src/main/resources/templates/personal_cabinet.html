@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Особистий кабінет</title>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #34495e;
+        }
+
+        form {
+            margin: 0;
+            padding: 0;
+        }
+
+        .logout-btn {
+            background: #e74c3c;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            border: none;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 10px;
+        }
+
+        .book {
+            min-width: 200px;
+            height: 250px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            color: black;
+        }
+
+        .book:hover {
+            background: #bdc3c7;
+        }
+
+        .book-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .book-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .add-book-btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .add-book-btn:hover {
+            background: #2980b9;
+        }
+
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <ul>
+    <li><a href="main">Головна</a></li>
+    <li><a href="personal_cabinet">Особистий кабінет</a></li>
+    <!--<li><a href="main">Налаштування</a></li>-->
+  </ul>
+  <form action="/logout" method="get">
+    <button type="submit" class="logout-btn">Вийти</button>
+  </form>
+</div>
+
+<div class="main-content">
+  <a href="/create_book" class="add-book-btn">Додати книгу</a>
+
+  <h2>Нещодавні книги</h2>
+  <div class="book-container">
+    <a class="book" href="recent_book1">📖 Книга 1</a>
+    <a class="book" href="recent_book2">📖 Книга 2</a>
+    <a class="book" href="recent_book3">📖 Книга 3</a>
+    <a class="book" href="recent_book4">📖 Книга 4</a>
+    <a class="book" href="recent_book5">📖 Книга 5</a>
+  </div>
+
+  <h2>Мої книги</h2>
+  <div class="book-container">
+    <a class="book" href="my_book1">📖 Моя книга 1</a>
+    <a class="book" href="my_book2">📖 Моя книга 2</a>
+    <a class="book" href="my_book3">📖 Моя книга 3</a>
+    <a class="book" href="my_book4">📖 Моя книга 4</a>
+    <a class="book" href="my_book5">📖 Моя книга 5</a>
+  </div>
+</div>
+
+</body>
+</html>
