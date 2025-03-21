@@ -74,6 +74,12 @@ public class MainController {
         return "main";
     }
 
+    @GetMapping("/create_book")
+    public String bookPage(HttpServletRequest request) {
+        if (checkUser(request) == null) return "welcome";
+        return "book";
+    }
+
     //--------------------------------------------------------------
     @GetMapping("/main")
     public String mainPage(HttpServletRequest request) {
