@@ -139,15 +139,15 @@
 </div>
 
 <div class="main-content">
-  <input type="text" class="search-bar" placeholder="Пошук книг...">
+  <form action="/search" method="get">
+    <input type="text" name="query" class="search-bar" placeholder="Пошук книг..." required>
+    <button type="submit">🔍 Пошук</button>
+  </form>
 
   <h2>Рекомендовані книги</h2>
   <div class="book-container">
-    <a class="book" href="book1">📖 Книга 1</a>
-    <a class="book" href="book2">📖 Книга 2</a>
-    <a class="book" href="book3">📖 Книга 3</a>
-    <a class="book" href="book4">📖 Книга 4</a>
-    <a class="book" href="book5">📖 Книга 5</a>
+    <a class="book" th:each="book : ${recomendedBooks}" th:text="${book.bookName}"
+       th:href="@{/book(id=${book.id})}"></a>
   </div>
 </div>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Читання книги</title>
+  <title th:text="${book.bookName}"></title>
   <style>
         * {
             margin: 0;
@@ -55,15 +55,10 @@
 <body>
 
 <!-- Назва книги -->
-<div class="book-title">Назва книги</div>
+<div class="book-title" th:text="${book.bookName}"></div>
 
 <!-- Текст книги -->
-<div class="book-content">
-  <p>Це початок книги. Одного разу в далекій-далекій країні жив письменник, який створював дивовижні історії...</p>
-  <p>Його книги були настільки захопливими, що люди не могли відірватися від читання...</p>
-  <p>Одного дня він вирішив написати щось особливе, щось, що запам’ятається назавжди...</p>
-  <p>Продовження історії...</p>
-  <p>...</p>
+<div class="book-content" th:text="${book.text}">
 </div>
 
 </body>

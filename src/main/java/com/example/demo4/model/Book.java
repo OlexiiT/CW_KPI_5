@@ -14,7 +14,12 @@ public class Book {
     private Long userId;
     private String text;
 
-    public Book() {
+    public Book() {}
+
+    public Book(String name, String text, Long userId) {
+        this.bookName = name;
+        this.text = text;
+        this.userId = userId;
     }
 
     public Long getId() {

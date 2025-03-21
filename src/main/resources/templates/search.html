@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Особистий кабінет</title>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результати пошуку</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -74,11 +74,20 @@
             flex-direction: column;
         }
 
+        /* Заголовок */
+        .search-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
         .book-container {
             display: flex;
             overflow-x: auto;
             gap: 15px;
             padding-bottom: 10px;
+            white-space: nowrap;
+            scroll-behavior: smooth;
         }
 
         .book {
@@ -95,6 +104,7 @@
             transition: 0.3s;
             text-decoration: none;
             color: black;
+            padding: 10px;
         }
 
         .book:hover {
@@ -109,54 +119,29 @@
             background: #888;
             border-radius: 4px;
         }
-
-        .add-book-btn {
-            background: #3498db;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            width: fit-content;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .add-book-btn:hover {
-            background: #2980b9;
-        }
-
-  </style>
+    </style>
 </head>
 <body>
 
 <div class="sidebar">
-  <ul>
-    <li><a href="main">Головна</a></li>
-    <li><a href="personal_cabinet">Особистий кабінет</a></li>
-    <!--<li><a href="main">Налаштування</a></li>-->
-  </ul>
-  <form action="/logout" method="get">
-    <button type="submit" class="logout-btn">Вийти</button>
-  </form>
+    <ul>
+        <li><a href="main.html">Головна</a></li>
+        <li><a href="personal_cabinet.html">Особистий кабінет</a></li>
+        <!--<li><a href="settings.html">Налаштування</a></li>-->
+    </ul>
+    <form action="/logout" method="post">
+        <button type="submit" class="logout-btn">Вийти</button>
+    </form>
 </div>
 
 <div class="main-content">
-  <a href="/create_book" class="add-book-btn">Додати книгу</a>
+    <h2 class="search-title" th:text="'Результати пошуку: ' + ${query}">Результати пошуку</h2>
 
-  <h2>Нещодавні книги</h2>
-  <div class="book-container">
-    <a class="book" th:each="recentBook : ${recentBooks}" th:text="${recentBook.bookName}"
-       th:href="@{/book(id=${recentBook.id})}">📖 Книга 1</a>
-  </div>
-
-  <h2>Мої книги</h2>
-  <div class="book-container">
-    <a class="book" th:each="book : ${books}" th:text="${book.bookName}" th:name="${book.id}" th:href="@{/book(id=${book.id})}"></a>
-  </div>
+    <div class="book-container">
+        <a class="book" th:each="book : ${books}"
+           th:text="${book.bookName}"
+           th:href="@{/book(id=${book.id})}"></a>
+    </div>
 </div>
 
 </body>

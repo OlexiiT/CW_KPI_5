@@ -1,21 +1,20 @@
 package com.example.demo4.controller;
 
+import com.example.demo4.model.Book;
 import com.example.demo4.model.User;
 import com.example.demo4.model.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserService {
     @Autowired
     private UserRepo userRepo;
     private Map<String, Long> usersSessions = new HashMap<>();
+    private Map<Long, List<Book>> recentUsersBooks = new HashMap<>();
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
     public Long findUserId(String sessionId) {
@@ -53,7 +52,7 @@ public class UserService {
     public void addUser(User user) {
         userRepo.save(user);
     }
-
+/*
     public void removeUser(User user) {
         userRepo.delete(user);
     }
@@ -62,11 +61,26 @@ public class UserService {
         //userRepo.findBy();
         //userRepo.fin
         return null;
-    }
+    }*/
 
     public void addUser(String email, String password) {
         String encodedPassword = encoder.encode(password);
         User user = new User("No name", email, encodedPassword);
         addUser(user);
+    }
+
+    public List<Book> getRecentBooks(Long userId) {
+        return recentUsersBooks.get(userId);
+    }
+
+    public void addRecentBook(Long userId, Book book) {
+        List<Book> recentBooks = recentUsersBooks.get(userId);
+        if (recentBooks == null) {
+            recentBooks = new ArrayList<>();
+            recentBooks.add(book);
+            recentUsersBooks.put(userId, recentBooks);
+        } else {
+            recentBooks.add(book);
+        }
     }
 }

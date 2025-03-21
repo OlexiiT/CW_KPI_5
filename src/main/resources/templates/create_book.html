@@ -1,10 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Створення книги</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            background-color: #fdf6e3;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .book-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            background-color: #f5deb3;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-content {
+            margin-top: 80px; /* Відступ, щоб не перекривалося заголовком */
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field {
+            font-family: Georgia, serif;
+            font-size: 18px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .input-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .input-text {
+            height: 300px;
+            resize: vertical;
+        }
+
+        .save-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            width: fit-content;
+            align-self: center;
+        }
+
+        .save-btn:hover {
+            background-color: #2980b9;
+        }
+
+    </style>
 </head>
 <body>
+
+<div class="book-title">Створення книги</div>
+
+<form class="book-content" action="/save_book" method="post">
+    <input type="text" name="title" class="input-field input-title" placeholder="Введіть назву книги" maxlength="100" required>
+
+    <textarea name="content" class="input-field input-text" placeholder="Введіть текст книги" required></textarea>
+
+    <button type="submit" class="save-btn">Зберегти книгу</button>
+</form>
 
 </body>
 </html>
